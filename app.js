@@ -6,6 +6,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+//require session and sqlite
+const session = require("express-session");
+
+const SQLiteStore = require("connect-sqlite3")(session);
+
 //requiring in the login routes for the sign in page
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");

@@ -1,9 +1,11 @@
 //create a login route to render a sign in page
 const express = require("express");
 
-//require in passport, the Google strategy and the SQL db
+//require in passport, the Google and Facebook strategies and the SQL db
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oidc");
+
+const FacebookStrategy = require("passport-facebook");
 
 //configure the Google strategy
 
@@ -90,6 +92,8 @@ router.get("/login", function (req, res, next) {
 	res.render("login");
 });
 
+//Google Auth Routes!
+
 router.get("/login/federated/google", passport.authenticate("google"));
 
 //route to authenticate the user from Google redirect
@@ -101,7 +105,11 @@ router.get(
 	})
 );
 
-//signout rout
+//Facebook Auth Routes!
+
+router.get("/login/federated/facebook", passport.authenticate("facebook"));
+
+//signout routd
 
 router.post("/logout", function (req, res, next) {
 	req.logout(function (err) {

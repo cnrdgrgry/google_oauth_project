@@ -184,7 +184,7 @@ router.get(
 	})
 );
 
-//signout routd
+//signout route
 
 router.post("/logout", function (req, res, next) {
 	req.logout(function (err) {

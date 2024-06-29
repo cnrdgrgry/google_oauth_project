@@ -35,6 +35,7 @@ a.button {
 
 a.google {
 	background: #4787ed;
+	margin-bottom: 20px;
 }
 
 a.facebook {
@@ -85,8 +86,8 @@ input {
 	border-radius: 5px;
 }
 
-input[type=email]:not(:focus):invalid,
-input[type=password]:not(:focus):invalid {
+input[type="email"]:not(:focus):invalid,
+input[type="password"]:not(:focus):invalid {
 	color: red;
 	outline-color: red;
 }

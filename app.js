@@ -6,8 +6,9 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-//require session and sqlite
+//require session, passport and sqlite
 const session = require("express-session");
+const passport = require("passport");
 
 const SQLiteStore = require("connect-sqlite3")(session);
 
@@ -40,6 +41,16 @@ app.use(
 	})
 );
 
+//using passport session to authenticate the session.
+app.use(
+	session({
+		secret: "keyboard cat",
+		resave: false,
+		saveUninitialized: false,
+		store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
+	})
+);
+app.use(passport.authenticate("session"));
 app.use("/", indexRouter);
 
 //using the new authRouter

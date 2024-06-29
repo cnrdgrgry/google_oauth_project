@@ -1,4 +1,5 @@
-//create a login route to render a sign in page
+//login routes page
+
 const express = require("express");
 
 //require in passport, the Google and Facebook strategies and the SQL db

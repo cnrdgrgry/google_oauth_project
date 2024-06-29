@@ -7,7 +7,7 @@ const GoogleStrategy = require("passport-google-oidc");
 
 //configure the Google strategy
 
-assport.use(
+passport.use(
 	new GoogleStrategy(
 		{
 			clientID: process.env["GOOGLE_CLIENT_ID"],
@@ -79,5 +79,14 @@ router.get("/login", function (req, res, next) {
 });
 
 router.get("/login/federated/google", passport.authenticate("google"));
+
+//route to authenticate the user from Google redirect
+router.get(
+	"/oauth2/redirect/google",
+	passport.authenticate("google", {
+		successRedirect: "/",
+		failureRedirect: "/login",
+	})
+);
 
 module.exports = router;
